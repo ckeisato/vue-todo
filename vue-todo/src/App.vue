@@ -1,17 +1,19 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+  <div class="container" id="app">
+    <div class="page-header">
+      <h1>Vue.js Todo App</h1>
+    </div>
+   
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import TodoList from './components/TodoList'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    TodoList
   }
 }
 </script>
