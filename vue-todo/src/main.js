@@ -1,12 +1,7 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App'
+import App from './App.vue'
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  template: '<App/>',
-  components: { App }
+  render: h => h(App)
 })
-
-Vue.use(Vuex)
