@@ -2,17 +2,14 @@
 <template>
   <div id="todolist">
     <h3>{{ title }}</h3>
-
+    <input class="add-todo" type="text" v-model="todoText" placeholder="Enter a new todo" v-on:keyup.enter="addTodo">
+    <button class="add-todo-button" type="button" v-on:click="addTodo">Add Todo</button>
     <ul v-for="(todo, index) in todos">
       <li>
-        <todo></todo>
-        <input v-on:click="checkTodo(index)" type="checkbox">
-        <span>{{ todo.text }}</span>
+        <todo :content="todo.text" :completed="todo.completed"></todo>
         <button type="button" v-on:click="removeTodo(index)">Remove</button>
       </li>
     </ul>
-    <input type="text" v-model="todoText" placeholder="Enter a new todo" v-on:keyup.enter="addTodo">
-    <button type="button" v-on:click="addTodo">Add Todo</button>
 
   </div>
 </template>
@@ -28,12 +25,11 @@ export default {
   },
   data () {
     return {
-      title: 'To Do list',
+      title: 'To Do list component',
       todoText: '',
       todos: [
         {
-          text: "hello",
-          completed: false
+          text: "hello"
         }
       ]
     }
@@ -42,25 +38,50 @@ export default {
     addTodo: function() {
       var todoText = this.todoText.trim();
       if (todoText) {
-        this.todos.push({ text: todoText, completed: false });
+        this.todos.push({ text: todoText });
         this.todoText = '';
       }
     },
     removeTodo: function(index) {
       this.todos.splice(index, 1);
-    },
-    checkTodo: function(index) {
-      if (this.todos[index].completed) {
-        this.todos[index].completed = false;
-      }
-      else {
-        this.todos[index].completed = true;
-      }
     }
   }
 }
 </script>
 
 <style>
+#todolist {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin-top: 60px;
+  margin: 0 30px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.add-todo {
+  line-height: 24px;
+  width: 50%;
+  font-size: 16px;
+  padding: 4px;
+}
+
+button {
+  font-size: 14px;
+  padding: 8px;
+  color: #444; /* rgba not supported (IE 8) */
+  color: rgba(0, 0, 0, 0.80); /* rgba supported */
+  border: 1px solid #999;  /*IE 6/7/8*/
+  border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+  background-color: #E6E6E6;
+  text-decoration: none;
+  border-radius: 4px;
+}
 
 </style>
