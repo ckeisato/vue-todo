@@ -1,21 +1,14 @@
 <template>
-  <div>
-    <span v-show="!inEditMode">{{title}}</span>
-    <input v-show="inEditMode">
-  </div>
+  {{ text.text }}
 </template>
 
 <script>
+
+
 export default {
+  name: 'todo',
   data () {
     return {
-      title: "",
-      inEditMode: false
-    }
-  },
-  methods: {
-    clicked: function() {
-      this.inEditMode = true;
     }
   }
 }
