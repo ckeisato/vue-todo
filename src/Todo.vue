@@ -36,6 +36,11 @@ export default {
   text-decoration: line-through;
 }
 
+/* this should go away with the proper implementation of a store */
+.iscompleted + button {
+  display: none;
+}
+
 .todo {
   display: inline-block;
 }

@@ -7,7 +7,7 @@
     <ul v-for="(todo, index) in todos">
       <li>
         <todo :content="todo.text" :completed="todo.completed"></todo>
-        <button type="button" v-on:click="removeTodo(index)">Remove</button>
+        <button v-show="!todo.completed" type="button" v-on:click="removeTodo(index)">Remove</button>
       </li>
     </ul>
 
@@ -29,7 +29,7 @@ export default {
       todoText: '',
       todos: [
         {
-          text: "hello"
+          text: "first todo item"
         }
       ]
     }
